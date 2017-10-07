@@ -1,6 +1,6 @@
 import { Component,  HostListener, OnInit } from '@angular/core';
 
-import {trigger, state, style, transition, animate, keyframes} from '@angular/animations';
+import {trigger, state, style, transition, animate, keyframes, query} from '@angular/animations';
 
 import {ColorAnimateService} from './color-animate.service';
 
@@ -8,7 +8,7 @@ import {ColorAnimateService} from './color-animate.service';
   template: `<div [@listColorChange]="listColor"></div>`,
   styles: [`
     :host {
-      overflow-x: hidden;
+      overflow: hidden;
       display: block;
     }
   `],
@@ -16,9 +16,13 @@ import {ColorAnimateService} from './color-animate.service';
     trigger('listColorChange', [
       state('in', style({color: 'black'})),
       transition('* => in', [
-        style({height: 0, transform: 'translateX(100%)'}),
-        animate('500ms', style({height: '*'})),
-        animate('1000ms', style({transform: 'translateX(0)'})),
+        style({height: '0px', transform: 'translateX(100%)'}),
+        query(':first-child', [
+          animate('0ms', style({height: '0'})),
+          animate('300ms', style({height: '*'})),
+
+        ]),
+        animate('800ms', style({transform: 'translateX(0)'})),
       ])
   ])]
 })
