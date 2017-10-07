@@ -28,7 +28,7 @@ export class NgForAnimator implements OnChanges, AfterViewInit {
     }
 
     public ngAfterViewInit(){
-      this.cRef.hostView.rootNodes[0].childNodes[0].classList = this._elRef.nativeElement.classList;
+      //this.cRef.hostView.rootNodes[0].childNodes[0].classList = this._elRef.nativeElement.classList;
       this.cRef.hostView.rootNodes[0].childNodes[0].appendChild(this._elRef.nativeElement);
     }
 

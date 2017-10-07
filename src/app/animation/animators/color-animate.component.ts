@@ -5,21 +5,17 @@ import {trigger, state, style, transition, animate, keyframes} from '@angular/an
 import {ColorAnimateService} from './color-animate.service';
 
 @Component({
-  template: `<div style="overflow: hidden" [@listColorChange]="listColor"></div>`,
+  template: `<div [@listColorChange]="listColor"></div>`,
   animations: [
     trigger('listColorChange', [
       state('void', style({color: 'red'})),
       state('in', style({color: 'black'})),
-      state('out', style({opacity: 0.5})),
-      transition(':enter', [
-        animate('1200ms ease', keyframes([
-          style({color: 'red', offset: 0}),
-          style({color: 'black', offset: .5})
-        ])),
+      state('out', style({color: 'red'})),
       transition('in => out', [
-        animate('1200ms', style({opacity: 0.5}))
+        style({ color: 'black' }),
+        animate('1200ms', style({color: 'blue'})),
+        animate('1200ms', style({color: 'red'})),
       ])
-    ])
   ])]
 })
 export class ColorAnimateComponent implements OnInit {

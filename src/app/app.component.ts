@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import {ListStateService} from './list-state.service';
+import {ListStateService} from './animation/list-state.service';
 
-import * as Animators from './animators';
+import * as Animators from './animation/animators';
 
 @Component({
   selector: 'app-root',
