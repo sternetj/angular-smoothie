@@ -1,12 +1,12 @@
 import {Directive, ElementRef, ViewChildren, HostListener, ViewContainerRef,
-        ComponentFactoryResolver, Input, Type, OnChanges, AfterViewInit } from '@angular/core';
+        ComponentFactoryResolver, Input, Type, OnChanges, OnDestroy, AfterViewInit } from '@angular/core';
 
 import * as Animators from './animators';
 
 import {ColorAnimateService} from "./animators";
 
 @Directive({ selector: '[ngForAnimator]' })
-export class NgForAnimator implements OnChanges, AfterViewInit {
+export class NgForAnimator implements OnChanges, AfterViewInit, OnDestroy {
 
     @Input('ngForAnimator') private animator: string | Type<any> = Animators.ColorAnimateComponent;
     @Input() elementId: number = 0;
@@ -25,6 +25,12 @@ export class NgForAnimator implements OnChanges, AfterViewInit {
         this.cRef = this._viewContainer.createComponent(componentFactory);
         this.cRef.instance.elementId = this.elementId;
       }
+    }
+
+    public ngOnDestroy() {
+      //Called once, before the instance is destroyed.
+      //Add 'implements OnDestroy' to the class.
+      this.colorAnimateService.LeaveNotifier.next(this.elementId);
     }
 
     public ngAfterViewInit(){

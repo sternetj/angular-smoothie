@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { ColorAnimateComponent } from './animators/color-animate.component';
-import { NgForAnimator } from './ngForAnimator';
+import { NgForAnimator } from './ng-for-animator.directive';
 import { ListStateService } from './list-state.service';
 import { ColorAnimateService } from './animators/color-animate.service';
 import { NewItemAnimateComponent } from './animators/new-item-animate.component';

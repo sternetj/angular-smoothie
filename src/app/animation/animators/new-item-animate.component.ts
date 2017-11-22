@@ -20,9 +20,16 @@ import {ColorAnimateService} from './color-animate.service';
         query(':first-child', [
           animate('0ms', style({height: '0'})),
           animate('300ms', style({height: '*'})),
-
         ]),
         animate('800ms', style({transform: 'translateX(0)'})),
+      ]),
+      transition(':leave', [
+        style({transform: 'translateX(0)', height: '*'}),
+        animate('800ms', style({transform: 'translateX(100%)'})),
+        query(':first-child', [
+          animate('0s', style({height: '*'})),
+          animate('300ms', style({height: '0'})),
+        ]),
       ])
   ])]
 })
@@ -35,8 +42,18 @@ export class NewItemAnimateComponent implements OnInit {
   public ngOnInit() {
     this.colorAnimateService.ListNotifier.subscribe((fade: number) => {
       if(this.elementId === fade) {
-        setTimeout( () => {this.listColor = 'in'}, 0);
       }
     });
+
+    this.colorAnimateService.LeaveNotifier.subscribe((leaving) => {
+      if(this.elementId === leaving) {
+        this.listColor = 'leave';
+        setTimeout( () => {
+          setTimeout( () => {
+            this.listColor = 'in'
+          }, 1000);
+        }, 0);
+      }
+    })
   }
 }

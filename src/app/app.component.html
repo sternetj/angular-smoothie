@@ -19,7 +19,7 @@
             *ngFor="let item of testList; let idx=index"
             [elementId]="idx"
             [ngForAnimator]="animation">
-        <div class="panel panel-default">
+        <div class="panel panel-default" (click)="testList.splice(idx, 1)">
           <div class="panel-body">
             <h1 class="text-center">{{item}}</h1>
           </div>
