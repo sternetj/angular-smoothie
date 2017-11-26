@@ -3,6 +3,7 @@ import { Component,  HostListener, OnInit } from '@angular/core';
 import {trigger, state, style, transition, animate, keyframes, query} from '@angular/animations';
 
 import {ColorAnimateService} from './color-animate.service';
+import { Animator } from '../animator';
 
 @Component({
   template: `<div [@listColorChange]="listColor"></div>`,
@@ -33,7 +34,7 @@ import {ColorAnimateService} from './color-animate.service';
       ])
   ])]
 })
-export class NewItemAnimateComponent implements OnInit {
+export class NewItemAnimateComponent implements OnInit, Animator {
   public listColor = 'in';
   public elementId = -1;
 
@@ -55,5 +56,21 @@ export class NewItemAnimateComponent implements OnInit {
         }, 0);
       }
     })
+  }
+
+  public elementAddedAfter(added: number, current: number) {
+    console.log(`element ${added} added after ${current}`)
+  }
+
+  public elementAddedBefore(added: number, current: number) {
+    console.log(`element ${added} added before ${current}`);
+  }
+
+  public elementRemovedBefore(removed: number, current: number) {
+    console.log(`element ${removed} removed before ${current}`)
+  }
+
+  public elementRemvoedAfter(removed: number, current: number) {
+    console.log(`element ${removed} removed after ${current}`)
   }
 }

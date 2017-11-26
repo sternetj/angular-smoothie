@@ -7,12 +7,14 @@ import { NgForAnimator } from './ng-for-animator.directive';
 import { ListStateService } from './list-state.service';
 import { ColorAnimateService } from './animators/color-animate.service';
 import { NewItemAnimateComponent } from './animators/new-item-animate.component';
+import { ItemRemoveAnimateComponent } from './animators/item-remove-animate.component';
 
 @NgModule({
   declarations: [
     NgForAnimator,
     ColorAnimateComponent,
-    NewItemAnimateComponent
+    NewItemAnimateComponent,
+    ItemRemoveAnimateComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -21,7 +23,7 @@ import { NewItemAnimateComponent } from './animators/new-item-animate.component'
   exports: [
     NgForAnimator,
   ],
-  entryComponents: [ ColorAnimateComponent, NewItemAnimateComponent ],
+  entryComponents: [ ColorAnimateComponent, NewItemAnimateComponent, ItemRemoveAnimateComponent ],
   providers: [ListStateService, ColorAnimateService]
 })
 export class AnimationModule { }

@@ -1,36 +1,9 @@
-<div class="row" style="position: fixed; left: 0; right: 0; top: 0;">
-  <div class="col-xs-6 col-xs-offset-3">
-    <h1>
-      Will fade all boxes where Newbox# % box# == 0
-    </h1>
-  </div>
-  <div class="col-xs-6 col-xs-offset-3">
-    <button style="width:100%" class="btn btn-success" type="button" (click)="addListItem()">Add</button>
-  </div>
-  <div class="col-xs-12">
-    <hr>
-  </div>
+<div @ngEnterLeaveAnimation *ngFor="let animation of [animators.ItemRemoveAnimateComponent, animators.NewItemAnimateComponent, animators.ColorAnimateComponent]">
+  <app-demo @ngEnterLeaveAnimation [animation]="animation"></app-demo>
+  <hr>
 </div>
-
-<div style="margin-top: 180px">
-  <div *ngFor="let animation of [animators.NewItemAnimateComponent, animators.ColorAnimateComponent]">
-    <div class="row">
-      <div class="col-xs-12"
-            *ngFor="let item of testList; let idx=index"
-            [elementId]="idx"
-            [ngForAnimator]="animation">
-        <div class="panel panel-default" (click)="testList.splice(idx, 1)">
-          <div class="panel-body">
-            <h1 class="text-center">{{item}}</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      Content
-    </div>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    Content
   </div>
 </div>

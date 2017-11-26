@@ -6,4 +6,7 @@ import {Subject} from 'rxjs/Subject';
 export class ColorAnimateService {
   public ListNotifier: Subject<number> = new Subject<number>();
   public LeaveNotifier: Subject<number> = new Subject<number>();
+  public animators: {
+    [forRef: number]: object[],
+  } = {};
 }

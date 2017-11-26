@@ -3,11 +3,19 @@ import { Component } from '@angular/core';
 import {ListStateService} from './animation/list-state.service';
 
 import * as Animators from './animation/animators';
+import { trigger, transition, query, animateChild } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('ngEnterLeaveAnimation', [
+      transition(':enter, :leave', [
+        query('@*', animateChild())
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   public animators = Animators;

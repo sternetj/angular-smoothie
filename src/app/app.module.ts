@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AnimationModule } from './animation/animation.module';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DemoComponent,
   ],
   imports: [
     BrowserAnimationsModule,
